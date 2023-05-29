@@ -29,7 +29,7 @@
 | category_id                         | integer    | null: false                    |
 | condition_id                        | integer    | null: false                    |
 | shipping_fee_id                     | integer    | null: false                    |
-| sender_area_id                      | integer    | null: false                    |
+| prefecture_id                       | integer    | null: false                    |
 | shipping_duration_id                | integer    | null: false                    |
 | price                               | integer    | null: false                    |
 | user                                | references | null: false, foreign_key: true |
@@ -56,11 +56,11 @@
 | address_line1                       | string     | null: false                    |
 | address_line2                       | string     |                                |
 | phone_number                        | string     | null: false                    |
-| purchases                           | string     | null: false, foreign_key: true |
+| purchase                            | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
 - belongs_to_active_hash :prefecture
 
 
@@ -76,6 +76,6 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :shipping_addresses
+- has_one    :shipping_addresses
 
 
