@@ -17,6 +17,8 @@
 ### Association
 
 * has_many :items
+* has_many :purchases
+
 
 ## items table
 
@@ -24,11 +26,11 @@
 |-------------------------------------|------------|--------------------------------|
 | item_name                           | string     | null: false                    |
 | item_description                    | text       | null: false                    |
-| category                            | integer    | null: false                    |
-| condition                           | integer    | null: false                    |
-| shipping_fee                        | integer    | null: false                    |
-| sender_area                         | integer    | null: false                    |
-| shipping_duration                   | integer    | null: false                    |
+| category_id                         | integer    | null: false                    |
+| condition_id                        | integer    | null: false                    |
+| shipping_fee_id                     | integer    | null: false                    |
+| sender_area_id                      | integer    | null: false                    |
+| shipping_duration_id                | integer    | null: false                    |
 | price                               | integer    | null: false                    |
 | user                                | references | null: false, foreign_key: true |
 
@@ -40,8 +42,7 @@
 - belongs_to_active_hash :shipping_fee
 - belongs_to_active_hash :sender_area
 - belongs_to_active_hash :shipping_duration
-- has_one :shipping_address
-- has_one :purchases
+- has_one :purchase
 
 
 
@@ -50,16 +51,16 @@
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | postal_code                         | string     | null: false                    |
-| prefecture                          | integer    | null: false                    |
+| prefecture_id                       | integer    | null: false                    |
 | city                                | string     | null: false                    |
 | address_line1                       | string     | null: false                    |
 | address_line2                       | string     |                                |
 | phone_number                        | string     | null: false                    |
-| item                                | string     | null: false, foreign_key: true |
+| purchases                           | string     | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
+- has_one :purchase
 - belongs_to_active_hash :prefecture
 
 
@@ -68,11 +69,13 @@
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
-| user                                | string     | null: false, foreign_key: true |
-| item                                | string     | null: false, foreign_key: true |
+| user                                | references | null: false, foreign_key: true |
+| item                                | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :item
+- belongs_to :shipping_addresses
 
 
