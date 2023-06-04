@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
 
   before_action :set_prototype, only: [:show, :edit, :update]
 
+  before_action :contributor_confirmation, only: [:edit, :update]
+
   def index
     @items = Item.order('created_at DESC')
   end
@@ -26,11 +28,11 @@ class ItemsController < ApplicationController
 
   def edit
 
-    redirect_to root_path unless current_user == @item.user
+
   end
 
   def update
-    if current_user == @item.user && @item.update(item_params)
+    if @item.update(item_params)
       redirect_to item_path(@item)
     else
       render :edit
@@ -47,5 +49,10 @@ class ItemsController < ApplicationController
   def set_prototype
     @item = Item.find(params[:id])
   end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
+  end
+
 
 end
