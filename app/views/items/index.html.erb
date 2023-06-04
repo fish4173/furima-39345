@@ -132,11 +132,11 @@
 
         <div class='item-img-content'>
         <% if item.image.attached? %>
-         <%= link_to "#" do %>
+         <%= link_to item_path(item.id), method: :get do %>
           <%= image_tag(item.image, alt: "リンク切れ", class: "item-img") %>
          <% end %>
         <% else %>
-          <%= link_to "#" do %>
+         <%= link_to item_path(item.id), method: :get do %>
             <%= image_tag("no_image.png", alt: "リンク切れ", class: "item-img") %>
           <% end %>
         <% end %>
