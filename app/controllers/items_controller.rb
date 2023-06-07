@@ -26,6 +26,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.purchase.present?
+      redirect_to root_path
+    end
+
   end
 
   def update
@@ -56,6 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path unless current_user == @item.user
+    set_prototype
+    redirect_to root_path if @item.nil? || (current_user == @item.user && @item.purchase.present?)
   end
 end
