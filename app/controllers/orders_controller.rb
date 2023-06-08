@@ -32,11 +32,7 @@ class OrdersController < ApplicationController
   end
 
   def contributor_confirmation
-    # redirect_to root_path if (current_user == @item.user && @item.purchase.present?) or (current_user != @item.user && @item.purchase.present?)
     redirect_to root_path if @item.purchase.present? || current_user == @item.user
-    # 購入テーブルに情報があるか？@item.purchase.present?
-    # カレンとユーザーが出した商品化どうか？
-    # ログイン状態であるか？
   end
 
   def pay_item
@@ -45,7 +41,7 @@ class OrdersController < ApplicationController
       # amount: purchase_params[:price],  # 商品の値段
       amount: @item.price, # 商品の値段
       card: purchase_params[:token], # カードトークン
-      currency: 'jpy'                 # 通貨の種類（日本円）
+      currency: 'jpy' # 通貨の種類（日本円）
     )
   end
 end

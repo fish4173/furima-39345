@@ -18,9 +18,7 @@ const pay = () => {
     const inputCardnumber = document.getElementById("number-form").value;
     const cardExpiry = document.getElementById("expiry-form").value;
     const cvcNumber = document.getElementById("cvc-form").value;
-    console.log(inputCardnumber);
-    console.log(cardExpiry);
-    console.log(cvcNumber);
+
 
 
     e.preventDefault();

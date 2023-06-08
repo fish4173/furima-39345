@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    set_prototype
-    redirect_to root_path if @item.nil? || (current_user == @item.user && @item.purchase.present?)
+    # redirect_to root_path if @item.nil? || (current_user == @item.user && @item.purchase.present?)
+    redirect_to root_path if current_user != @item.user || @item.purchase.present?
   end
 end
