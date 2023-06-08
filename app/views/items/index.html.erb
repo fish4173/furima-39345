@@ -131,20 +131,20 @@
 
 
         <div class='item-img-content'>
-        <% if item.image.attached? %>
-         <%= link_to item_path(item.id), method: :get do %>
-          <%= image_tag(item.image, alt: "リンク切れ", class: "item-img") %>
-         <% end %>
-        <% else %>
-         <%= link_to item_path(item.id), method: :get do %>
-            <%= image_tag("no_image.png", alt: "リンク切れ", class: "item-img") %>
+          <% if item.image.attached? %>
+          <%= link_to item_path(item.id), method: :get do %>
+            <%= image_tag(item.image, alt: "リンク切れ", class: "item-img") %>
           <% end %>
-        <% end %>
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          <% else %>
+          <%= link_to item_path(item.id), method: :get do %>
+              <%= image_tag("no_image.png", alt: "リンク切れ", class: "item-img") %>
+            <% end %>
+          <% end %>
+          <% if item.purchase.present? %>
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+          <% end %>
 
         </div>
         <div class='item-info'>
