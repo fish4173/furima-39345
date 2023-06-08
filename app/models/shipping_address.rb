@@ -1,5 +1,5 @@
 class ShippingAddress < ApplicationRecord
-  belongs_to:purchase
+  belongs_to :purchase
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
@@ -10,5 +10,4 @@ class ShippingAddress < ApplicationRecord
   # validates :city, presence: true
   # validates :address_line1, presence: true
   # validates :phone_number, presence: true
-
 end
