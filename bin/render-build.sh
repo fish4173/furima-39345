@@ -7,4 +7,5 @@ bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rake db:migrate
 # bundle exec rake db:migrate
-DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:migrate:reset
+# DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:migrate:reset
+# 上記の記載があると、プッシュするたびにデータが消えるので注意
